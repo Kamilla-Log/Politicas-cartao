@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cartão de Crédito · Marketing · Central de Políticas</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#F4F4F7;color:#0B0D19;min-height:100vh;display:flex;flex-direction:column}
+body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(circle,#c4b5e0 1px,transparent 1px);background-size:28px 28px;opacity:.2;pointer-events:none;z-index:0}
+
+/* HEADER */
+header{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:50px;background:rgba(244,244,247,.95);backdrop-filter:blur(8px);border-bottom:1px solid #E5E5EA}
+.logo-wrap{display:flex;align-items:center;gap:16px}
+.logo-wrap img{height:20px}
+.hd{width:1px;height:16px;background:#D1D5DB}
+.hd-title{font-size:11px;font-weight:700;color:#6B7280;letter-spacing:1.8px;text-transform:uppercase}
+.status{display:flex;align-items:center;gap:6px;font-size:12px;color:#374151}
+.sdot{width:7px;height:7px;border-radius:50%;background:#22C55E;box-shadow:0 0 0 2px rgba(34,197,94,.2)}
+
+/* LAYOUT */
+.layout{position:relative;z-index:1;display:grid;grid-template-columns:260px 1fr;max-width:1200px;margin:0 auto;width:100%;padding:0 24px;gap:0;flex:1}
+
+/* SIDEBAR */
+aside{padding:28px 0 40px;position:sticky;top:50px;height:calc(100vh - 50px);overflow-y:auto;border-right:1px solid #E5E5EA}
+.breadcrumb{display:flex;align-items:center;gap:6px;font-size:12px;color:#9CA3AF;margin-bottom:20px;padding-right:24px;flex-wrap:wrap}
+.breadcrumb a{color:#9CA3AF;text-decoration:none}.breadcrumb a:hover{color:#6613D0}
+.breadcrumb .sep{color:#D1D5DB}.breadcrumb .current{color:#0B0D19;font-weight:600}
+.search-box{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #E5E7EB;border-radius:8px;padding:8px 12px;margin-bottom:20px;margin-right:24px}
+.search-box span{font-size:12px;color:#9CA3AF}
+.nav-label{font-size:10px;font-weight:700;color:#9CA3AF;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px}
+.nav-list{list-style:none;display:flex;flex-direction:column;gap:2px;padding-right:24px}
+.nav-list a{display:flex;align-items:flex-start;gap:10px;padding:8px 10px;border-radius:8px;text-decoration:none;color:#6B7280;font-size:13px;transition:all .15s;line-height:1.4}
+.nav-list a:hover{background:#F3EEFF;color:#6613D0}
+.nav-list a.active{background:#F3EEFF;color:#6613D0;font-weight:600;border-left:3px solid #6613D0;padding-left:8px}
+.nav-list .num{font-size:10px;font-weight:700;color:#C4B5E0;min-width:16px;margin-top:1px}
+.nav-list a.active .num{color:#6613D0}
+
+/* CONTENT CARD */
+main{padding:28px 0 60px 40px;min-width:0}
+.content-card{background:#fff;border-radius:16px;padding:36px 40px;box-shadow:0 1px 4px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.04)}
+
+/* POLICY HEADER */
+.policy-tagline{font-size:11px;font-weight:700;color:#6B7280;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px}
+.policy-title h1{font-size:36px;font-weight:900;line-height:1.1;color:#0B0D19;margin-bottom:16px}
+.policy-title h1 span{color:#6613D0}
+.policy-intro{font-size:14px;color:#374151;line-height:1.6;margin-bottom:20px;max-width:700px}
+.meta-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+.meta-tag{display:inline-flex;align-items:center;gap:4px;padding:5px 12px;border-radius:999px;border:1px solid #E5E7EB;font-size:12px;color:#374151;background:#F9FAFB}
+.meta-tag .tkey{color:#9CA3AF}.meta-tag .tval{font-weight:600;color:#6613D0}
+.meta-tag .tval.orange{color:#FF6200}.meta-tag .tval.gray{color:#374151}
+
+/* SUMMARY CARDS */
+.summary-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:36px}
+.scard{background:#fff;border-radius:10px;padding:18px;border:1px solid #E5E7EB;border-top:3px solid #22C55E}
+.scard.orange{border-top-color:#FF6200}.scard.red{border-top-color:#EF4444}
+.scard-label{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:#6B7280;margin-bottom:8px;display:flex;align-items:center;gap:5px}
+.scard-val{font-size:20px;font-weight:900;color:#16A34A;line-height:1.1;margin-bottom:5px}
+.scard.orange .scard-val{color:#FF6200}.scard.red .scard-val{color:#EF4444;font-size:16px}
+.scard-desc{font-size:12px;color:#6B7280;line-height:1.5}
+
+/* SECTIONS */
+.section{margin-bottom:44px;scroll-margin-top:70px}
+.sec-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.sec-badge{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:#6613D0;color:#fff;font-size:11px;font-weight:800;flex-shrink:0}
+.sec-head h2{font-size:22px;font-weight:800;color:#0B0D19}
+.sec-sublabel{font-size:10px;font-weight:700;color:#9CA3AF;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:10px}
+.sec-desc{font-size:13px;color:#6B7280;line-height:1.6;margin-bottom:14px}
+
+/* TABLE */
+table{width:100%;border-collapse:collapse;font-size:13px;border:1px solid #E5E7EB;border-radius:10px;overflow:hidden}
+thead tr{background:#F9FAFB}
+thead th{color:#6B7280;font-weight:600;padding:10px 16px;text-align:left;font-size:11px;letter-spacing:.5px;text-transform:uppercase;border-bottom:1px solid #E5E7EB}
+tbody tr{border-bottom:1px solid #F3F4F6}
+tbody tr:last-child{border-bottom:none}
+tbody td{padding:11px 16px;vertical-align:top;line-height:1.5;color:#374151}
+tbody td.cat{font-weight:600;color:#0B0D19;width:36%}
+.role-badge{display:inline-block;padding:3px 10px;border-radius:999px;background:#F3EEFF;color:#6613D0;font-size:12px;font-weight:600;border:1px solid #E9D5FF}
+
+/* LIMIT BOX */
+.limit-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.limit-card{background:#F9FAFB;border-radius:10px;padding:18px;border:1px solid #E5E7EB}
+.lc-label{font-size:10px;font-weight:700;color:#9CA3AF;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
+.lc-val{font-size:28px;font-weight:900;color:#6613D0;line-height:1}
+.lc-val span{font-size:14px;font-weight:600;color:#9CA3AF}
+.lc-sub{font-size:12px;color:#9CA3AF;margin-top:4px}
+.bullets{list-style:disc;padding-left:20px;font-size:13px;color:#6B7280;line-height:1.9;margin-top:10px}
+
+/* 2-COL NOT ALLOWED GRID */
+.not-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.not-item{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:#FEF2F2;border-radius:8px;border:1px solid #FEE2E2;font-size:13px;color:#374151;line-height:1.4}
+.not-item .xi{width:18px;height:18px;border-radius:50%;background:#EF4444;color:#fff;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;flex-shrink:0;margin-top:1px}
+
+/* ACEITOS × NAO ACEITOS */
+.doc-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid #E5E7EB;border-radius:10px;overflow:hidden}
+.doc-col{}
+.doc-col-head{padding:10px 16px;font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;display:flex;align-items:center;gap:7px}
+.doc-col-head.green{background:#16A34A;color:#fff}
+.doc-col-head.red{background:#EF4444;color:#fff;border-left:1px solid rgba(255,255,255,.2)}
+.doc-items{padding:12px 16px;display:flex;flex-direction:column;gap:8px;background:#fff}
+.doc-col:last-child .doc-items{border-left:1px solid #E5E7EB}
+.doc-item{display:flex;align-items:center;gap:8px;font-size:13px;color:#374151}
+.doc-item .gi{color:#16A34A;font-size:15px}.doc-item .ri{color:#EF4444;font-size:15px}
+
+/* CALLOUT BOXES */
+.callout{border-radius:8px;padding:14px 16px;font-size:13px;line-height:1.6;margin-top:14px;display:flex;gap:12px}
+.callout-icon{width:24px;height:24px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;margin-top:1px}
+.callout.purple{background:#F3EEFF;border:1px solid #E9D5FF}
+.callout.purple .callout-icon{background:#6613D0;color:#fff}
+.callout.orange{background:#FFF7ED;border:1px solid #FED7AA}
+.callout.orange .callout-icon{background:#F59E0B;color:#fff}
+.callout.note{background:#F3EEFF;border-left:3px solid #6613D0;border-radius:0 8px 8px 0;padding:12px 16px;display:block;margin-top:14px}
+.callout.note strong{color:#6613D0}
+.callout-body{flex:1}
+.callout-label{font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
+.callout.purple .callout-label{color:#6613D0}
+.callout.orange .callout-label{color:#D97706}
+.callout-text{color:#374151}
+.callout-text strong{color:#0B0D19}
+
+/* CHECKLIST (green) */
+.check-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+.check-list li{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;background:#F0FDF4;border-radius:8px;border:1px solid #DCFCE7;font-size:13px;color:#374151;line-height:1.5}
+.check-list li .gi{color:#16A34A;font-size:15px;flex-shrink:0;margin-top:1px}
+
+/* FOOTER */
+footer{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;padding:0 56px;height:44px;border-top:1px solid #E5E5EA;background:#F4F4F7}
+footer span{font-size:11px;color:#9CA3AF}
+footer strong{color:#6613D0}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-wrap">
+    <img src="https://cdn.prod.website-files.com/5e7b99a162211f50391ae211/6349a849566948c1c8d0c8b5_logcomex_novo_logo_color.svg" alt="Logcomex">
+    <div class="hd"></div>
+    <span class="hd-title">Central de Políticas</span>
+  </div>
+  <div class="status"><span class="sdot"></span> Operacional</div>
+</header>
+
+<div class="layout">
+  <aside>
+    <div class="breadcrumb">
+      <a href="#">Central</a><span class="sep">/</span>
+      <a href="#">— Contas a Pagar</a><span class="sep">/</span>
+      <span class="current">Cartão MKT</span>
+    </div>
+    <div class="search-box">
+      <span>🔍</span><span>Buscar nesta política…</span>
+    </div>
+    <div class="nav-label">Navegação</div>
+    <ul class="nav-list">
+      <li><a href="#s1" class="active"><span class="num">01</span>Limite e Transações</a></li>
+      <li><a href="#s2"><span class="num">02</span>O Cartão Deve Usar</a></li>
+      <li><a href="#s3"><span class="num">03</span>O Cartão NÃO Deve Usar</a></li>
+      <li><a href="#s4"><span class="num">04</span>Responsável / Prestação de Contas</a></li>
+      <li><a href="#s5"><span class="num">05</span>Regras Obrigatórias</a></li>
+      <li><a href="#s6"><span class="num">06</span>Comprovantes e Fechamento</a></li>
+      <li><a href="#s7"><span class="num">07</span>Segurança</a></li>
+      <li><a href="#s8"><span class="num">08</span>Cumprimento das Regras</a></li>
+    </ul>
+  </aside>
+
+  <main>
+    <div class="content-card">
+
+      <div class="policy-tagline">Política de Uso do Cartão de Crédito</div>
+      <div class="policy-title">
+        <h1>Cartão de <span>Marketing</span></h1>
+      </div>
+      <p class="policy-intro">Mais agilidade para o dia a dia, com responsabilidade e transparência. <strong>O uso do cartão deve ser exceção</strong> — priorize Compras, Onfly ou contratos corporativos sempre que possível.</p>
+      <div class="meta-tags">
+        <span class="meta-tag"><span class="tkey">Área:</span>&nbsp;<span class="tval">Contas a Pagar</span></span>
+        <span class="meta-tag"><span class="tkey">Plataforma:</span>&nbsp;<span class="tval orange">Conta Simples</span></span>
+        <span class="meta-tag"><span class="tkey">Aplicação:</span>&nbsp;<span class="tval gray">Marketing</span></span>
+      </div>
+
+      <div class="summary-cards">
+        <div class="scard">
+          <div class="scard-label">💳 Limite Mensal</div>
+          <div class="scard-val">R$ 35.000<span style="font-size:13px;font-weight:600;color:#9CA3AF">/mês</span></div>
+          <div class="scard-desc">Limite inicial aprovado. Revisável conforme histórico de utilização.</div>
+        </div>
+        <div class="scard orange">
+          <div class="scard-label">🔢 Transações / Mês</div>
+          <div class="scard-val">Até 15 / mês</div>
+          <div class="scard-desc">Pode ser reavaliado conforme a necessidade do time.</div>
+        </div>
+        <div class="scard red">
+          <div class="scard-label">📅 Fechamento Mensal</div>
+          <div class="scard-val">Dia 29</div>
+          <div class="scard-desc">Todos os comprovantes e NFs anexados até o dia 29 de cada mês via Conta Simples.</div>
+        </div>
+      </div>
+
+      <!-- S1 -->
+      <div class="section" id="s1">
+        <div class="sec-head"><span class="sec-badge">01</span><h2>Limite e Transações Aprovadas</h2></div>
+        <div class="limit-grid">
+          <div class="limit-card">
+            <div class="lc-label">💳 Limite Mensal</div>
+            <div class="lc-val">R$ 35.000<span>/mês</span></div>
+            <div class="lc-sub">Revisável conforme histórico de utilização</div>
+          </div>
+          <div class="limit-card">
+            <div class="lc-label">🔢 Transações / Mês</div>
+            <div class="lc-val" style="color:#FF6200">Até 15 / mês</div>
+            <div class="lc-sub">Pode ser reavaliado conforme a necessidade</div>
+          </div>
+        </div>
+        <ul class="bullets">
+          <li>Limite inicial aprovado.</li>
+          <li>Se necessário e de acordo com a utilização, podemos avaliar um aumento do limite.</li>
+        </ul>
+      </div>
+
+      <!-- S2 -->
+      <div class="section" id="s2">
+        <div class="sec-head"><span class="sec-badge">02</span><h2>O Cartão Deve Ser Utilizado Para</h2></div>
+        <table>
+          <thead><tr><th>Categoria</th><th>Condição / Detalhe</th></tr></thead>
+          <tbody>
+      <tr><td class="cat">Eventos, feiras e patrocínios</td><td>Gastos pontuais relacionados à presença e representação do time de Marketing</td></tr>
+      <tr><td class="cat">Compras operacionais emergenciais de MKT</td><td>Gastos pontuais aprovados e vinculados às atividades do departamento</td></tr></tbody>
+        </table>
+        <div class="callout note"><strong>Despesas recorrentes</strong> que já vêm via Pipefy deverão continuar sendo solicitadas via <strong>Pipefy</strong>, conforme fluxo padrão de Contas a Pagar.</div>
+      </div>
+
+      <!-- S3 -->
+      <div class="section" id="s3">
+        <div class="sec-head"><span class="sec-badge">03</span><h2>O Cartão Não Deve Ser Utilizado Para</h2></div>
+        <div class="not-grid"><div class="not-item"><span class="xi">✕</span><span>Mídia paga (Google Ads, Meta Ads, LinkedIn Ads) — esses gastos já são mensais e ficam exclusivamente no cartão de licenças da companhia</span></div><div class="not-item"><span class="xi">✕</span><span>Ferramentas de Marketing e licenças — plataformas ligadas ao time devem ir via processo de Compras</span></div><div class="not-item"><span class="xi">✕</span><span>Despesas pessoais de qualquer natureza</span></div><div class="not-item"><span class="xi">✕</span><span>Viagens, hospedagens e despesas de deslocamento (seguir fluxo padrão via Onfly)</span></div><div class="not-item"><span class="xi">✕</span><span>Contratações recorrentes</span></div><div class="not-item"><span class="xi">✕</span><span>Licenças de software/SaaS (devem ir via Compras)</span></div><div class="not-item"><span class="xi">✕</span><span>Compras sem finalidade corporativa clara</span></div></div>
+        <div class="callout orange" style="margin-top:16px">
+          <div class="callout-icon">⚠</div>
+          <div class="callout-body">
+            <div class="callout-label">Atenção — Descumprimento</div>
+            <div class="callout-text">Solicitações fora das regras podem resultar em <strong>bloqueio temporário do cartão</strong> para utilização.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- S4 -->
+      <div class="section" id="s4">
+        <div class="sec-head"><span class="sec-badge">04</span><h2>Responsável / Prestação de Contas</h2></div>
+        <p class="sec-desc">Precisaremos definir um focal responsável pelo cartão dentro do time de Marketing. Esse responsável terá:</p>
+        <ul class="check-list">
+          <li><span class="gi">✓</span>Acesso ao Conta Simples</li>
+          <li><span class="gi">✓</span>Responsabilidade pela prestação de contas da área</li>
+          <li><span class="gi">✓</span>Acompanhamento dos lançamentos e anexos</li>
+          <li><span class="gi">✓</span>Apoio na validação mensal junto ao Financeiro</li>
+        </ul>
+      </div>
+
+      <!-- S5 -->
+      <div class="section" id="s5">
+        <div class="sec-head"><span class="sec-badge">05</span><h2>Regras Obrigatórias de Utilização</h2></div>
+        <p class="sec-desc">No momento da compra, o responsável deverá obrigatoriamente:</p>
+        <table>
+          <thead><tr><th>Ação obrigatória</th><th>Detalhe</th></tr></thead>
+          <tbody>
+            <tr><td class="cat">Informar a categoria da despesa</td><td>Classificar corretamente no Conta Simples no ato da compra</td></tr>
+            <tr><td class="cat">Informar o centro de custo (CC)</td><td>Informar o CC correto em todos os lançamentos</td></tr>
+            <tr><td class="cat">Preencher a descrição</td><td>Descrever com o máximo de detalhes a finalidade da compra</td></tr>
+            <tr><td class="cat">Anexar comprovante / NF</td><td>Anexar assim que disponível — obrigatório para conciliação</td></tr>
+          </tbody>
+        </table>
+        <div class="callout purple" style="margin-top:14px">
+          <div class="callout-icon">i</div>
+          <div class="callout-body">
+            <div class="callout-label">Princípio Geral</div>
+            <div class="callout-text">As informações de categoria, CC e descrição devem ser preenchidas <strong>no ato da utilização do cartão</strong>, mesmo que a nota fiscal ainda não tenha sido emitida/anexada. O Financeiro realiza conciliações semanais e os lançamentos precisam estar classificados corretamente no sistema.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- S6 -->
+      <div class="section" id="s6">
+        <div class="sec-head"><span class="sec-badge">06</span><h2>Comprovantes e Fechamento Mensal</h2></div>
+        <ul class="check-list">
+          <li><span class="gi">✓</span>Todos os comprovantes e notas fiscais devem ser anexados até o <strong>dia 29 de cada mês</strong></li>
+          <li><span class="gi">✓</span>Após o fechamento mensal, faremos uma call rápida de validação da prestação de contas com o focal da área</li>
+          <li><span class="gi">✓</span>Despesas sem documentação ou sem identificação adequada poderão ocasionar o <strong>bloqueio do cartão</strong></li>
+        </ul>
+        <div class="sec-sublabel" style="margin-top:18px">Documentos Aceitos × Não Aceitos</div>
+        <div class="doc-grid">
+          <div class="doc-col">
+            <div class="doc-col-head green">✓ &nbsp;Aceitos</div>
+            <div class="doc-items">
+              <div class="doc-item"><span class="gi">✅</span><span><strong>Nota fiscal</strong> ou cupom fiscal válido</span></div>
+              <div class="doc-item"><span class="gi">✅</span><span>Documento <strong>legível</strong>, 1 PDF por nota</span></div>
+            </div>
+          </div>
+          <div class="doc-col">
+            <div class="doc-col-head red">✕ &nbsp;Não Aceitos</div>
+            <div class="doc-items">
+              <div class="doc-item"><span class="ri">❌</span><span>Recibos simples</span></div>
+              <div class="doc-item"><span class="ri">❌</span><span>Documentos em Word</span></div>
+              <div class="doc-item"><span class="ri">❌</span><span>PDFs assinados via gov.br</span></div>
+              <div class="doc-item"><span class="ri">❌</span><span>Prints de extrato bancário</span></div>
+              <div class="doc-item"><span class="ri">❌</span><span>Comprovantes sem validade fiscal</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- S7 -->
+      <div class="section" id="s7">
+        <div class="sec-head"><span class="sec-badge">07</span><h2>Segurança</h2></div>
+        <p class="sec-desc">Em caso de perda, roubo ou qualquer utilização indevida do cartão:</p>
+        <ul class="check-list">
+          <li><span class="gi">✓</span>Comunicar imediatamente o Financeiro</li>
+          <li><span class="gi">✓</span>Solicitar o bloqueio do cartão imediatamente</li>
+        </ul>
+      </div>
+
+      <!-- S8 -->
+      <div class="section" id="s8">
+        <div class="sec-head"><span class="sec-badge">08</span><h2>Cumprimento das Regras</h2></div>
+        <div class="sec-sublabel">Responsabilidades</div>
+        <table>
+          <thead><tr><th>Responsável</th><th>Atribuição</th></tr></thead>
+          <tbody>
+            <tr><td><span class="role-badge">Colaborador (focal)</span></td><td>Seguir a política, respeitar limites, classificar corretamente e anexar documentação válida até o fechamento mensal, prestar contas.</td></tr>
+            <tr><td><span class="role-badge">Gestor direto</span></td><td>Estar ciente das compras realizadas, acompanhar o fechamento mensal das informações.</td></tr>
+            <tr><td><span class="role-badge">Head / Diretor Financeiro</span></td><td>Aprovar exceções (via e-mail); recusar solicitações fora da política sem justificativa</td></tr>
+            <tr><td><span class="role-badge">Financeiro (Contas a Pagar)</span></td><td>Conciliação semanal, validação mensal com o focal da área, auditoria e controle</td></tr>
+          </tbody>
+        </table>
+        <div class="callout orange" style="margin-top:16px">
+          <div class="callout-icon">⚠</div>
+          <div class="callout-body">
+            <div class="callout-label">Cumprimento das Regras</div>
+            <div class="callout-text">O não cumprimento das orientações e regras de utilização poderá resultar no <strong>bloqueio do cartão</strong> para utilização.<br><strong>Dúvidas?</strong> Fale com o <strong>Financeiro</strong> ou com a <strong>Kamilla</strong>.</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end content-card -->
+  </main>
+</div>
+
+<footer>
+  <span>Logcomex · Uso Interno</span>
+  <span>Central de Políticas · <strong>Logcomex</strong></span>
+</footer>
+</body>
+</html>

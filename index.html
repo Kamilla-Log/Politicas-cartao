@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Central de Políticas · Logcomex</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:#F4F4F7;color:#0B0D19;min-height:100vh;display:flex;flex-direction:column}
+
+/* DOT PATTERN BG */
+body::before{content:'';position:fixed;inset:0;background-image:radial-gradient(circle,#c4b5e0 1px,transparent 1px);background-size:28px 28px;opacity:.25;pointer-events:none;z-index:0}
+
+/* HEADER */
+header{position:relative;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:52px;background:#F4F4F7;border-bottom:1px solid #E5E5EA}
+.header-left{display:flex;align-items:center;gap:20px}
+.logo-ai{display:flex;align-items:center;gap:6px;font-size:15px;font-weight:700;color:#0B0D19;text-decoration:none}
+.logo-ai img{height:22px}
+.header-divider{width:1px;height:18px;background:#D1D5DB}
+.header-title{font-size:12px;font-weight:600;color:#6B7280;letter-spacing:1.5px;text-transform:uppercase}
+.status-badge{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:500;color:#374151}
+.status-dot{width:7px;height:7px;border-radius:50%;background:#22C55E;box-shadow:0 0 0 2px rgba(34,197,94,.2)}
+
+/* MAIN */
+main{flex:1;position:relative;z-index:1;display:flex;align-items:center;justify-content:center;padding:60px 40px}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:80px;max-width:1000px;width:100%;align-items:center}
+
+/* LEFT */
+.hero-tag{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;color:#FF6200;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:20px}
+.hero-tag::before{content:'✦';font-size:10px}
+.hero-h1{font-size:44px;font-weight:900;line-height:1.1;color:#0B0D19;margin-bottom:16px}
+.hero-h1 span{color:#6613D0}
+.hero-sub{font-size:15px;color:#6B7280;line-height:1.6;margin-bottom:28px;max-width:380px}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:999px;border:1px solid #E5E7EB;font-size:12px;font-weight:500;color:#374151;background:#fff}
+.pill.purple::before{content:'';width:6px;height:6px;border-radius:50%;background:#6613D0;flex-shrink:0}
+.pill.orange::before{content:'';width:6px;height:6px;border-radius:50%;background:#FF6200;flex-shrink:0}
+
+/* CARD */
+.login-card{background:#fff;border-radius:16px;padding:36px 32px;box-shadow:0 4px 24px rgba(0,0,0,.08);position:relative;overflow:hidden}
+.login-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#6613D0,#FF6200)}
+.card-title{font-size:20px;font-weight:800;color:#0B0D19;margin-bottom:6px}
+.card-sub{font-size:13px;color:#6B7280;margin-bottom:28px;line-height:1.5}
+.policy-list{display:flex;flex-direction:column;gap:12px;margin-bottom:24px}
+.policy-item{display:flex;align-items:center;gap:14px;padding:14px 16px;border-radius:10px;border:1.5px solid #E5E7EB;text-decoration:none;color:#0B0D19;transition:all .15s ease;cursor:pointer}
+.policy-item:hover{border-color:#6613D0;background:#F9F5FF;box-shadow:0 2px 8px rgba(102,19,208,.1)}
+.policy-icon{width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.policy-icon.purple{background:#F3EEFF}
+.policy-icon.orange{background:#FFF4EE}
+.policy-info{flex:1}
+.policy-name{font-size:13px;font-weight:700;color:#0B0D19;margin-bottom:2px}
+.policy-desc{font-size:11.5px;color:#6B7280}
+.policy-arrow{font-size:16px;color:#9CA3AF;transition:transform .15s}
+.policy-item:hover .policy-arrow{transform:translateX(3px);color:#6613D0}
+.card-note{display:flex;align-items:center;gap:6px;font-size:11px;color:#9CA3AF;justify-content:center}
+.card-note::before{content:'';width:6px;height:6px;border-radius:50%;background:#6613D0;flex-shrink:0}
+
+/* FOOTER */
+footer{position:relative;z-index:10;display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:44px;border-top:1px solid #E5E5EA}
+.footer-left,.footer-right{font-size:11px;color:#9CA3AF}
+.footer-right strong{color:#6613D0}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <a class="logo-ai" href="#">
+      <img src="https://cdn.prod.website-files.com/5e7b99a162211f50391ae211/6349a849566948c1c8d0c8b5_logcomex_novo_logo_color.svg" alt="Logcomex">
+    </a>
+    <div class="header-divider"></div>
+    <span class="header-title">Central de Políticas</span>
+  </div>
+  <div class="status-badge">
+    <span class="status-dot"></span>
+    Operacional
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <!-- LEFT -->
+    <div>
+      <div class="hero-tag">Acesso Interno</div>
+      <h1 class="hero-h1">Políticas de<br><span>Cartão de Crédito</span><br>Corporativo.</h1>
+      <p class="hero-sub">Consulte as regras, limites e condições de uso do cartão corporativo por departamento.</p>
+      <div class="pills">
+        <span class="pill purple">Marketing</span>
+        <span class="pill purple">People</span>
+        <span class="pill orange">Sempre atualizado</span>
+      </div>
+    </div>
+
+    <!-- CARD -->
+    <div class="login-card">
+      <div class="card-title">Selecione a política</div>
+      <p class="card-sub">Escolha o departamento para visualizar as regras de uso do cartão corporativo.</p>
+      <div class="policy-list">
+        <a class="policy-item" href="cartao_mkt.html">
+          <div class="policy-icon purple">📢</div>
+          <div class="policy-info">
+            <div class="policy-name">Cartão de Crédito · Marketing</div>
+            <div class="policy-desc">Limite R$ 35.000/mês · 15 transações</div>
+          </div>
+          <span class="policy-arrow">→</span>
+        </a>
+        <a class="policy-item" href="cartao_people.html">
+          <div class="policy-icon orange">👥</div>
+          <div class="policy-info">
+            <div class="policy-name">Cartão de Crédito · People</div>
+            <div class="policy-desc">Limite R$ 35.000/mês · 15 transações</div>
+          </div>
+          <span class="policy-arrow">→</span>
+        </a>
+      </div>
+      <div class="card-note">uso interno · logcomex.com</div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <span class="footer-left">Logcomex · Uso Interno</span>
+  <span class="footer-right">Central de Políticas · <strong>Logcomex</strong></span>
+</footer>
+
+</body>
+</html>
